@@ -12,8 +12,11 @@ app.get('/', (_req: Request, res: Response) => {
   res.send('Express + TypeScript Server!!');
 });
 
-app.listen(port, async () => {
+async function main(){
   await AppDataSource.initialize();
-  
-  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
-});
+  app.listen(port, async () => {
+    console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+  });
+}
+
+main()
