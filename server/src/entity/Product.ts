@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne, OneToMany } from "typeorm";
+import { User } from "./User";
+import { ProductType } from "./ProductType";
 
 @Entity()
 export class Product extends BaseEntity {
@@ -25,4 +27,11 @@ export class Product extends BaseEntity {
 
     @UpdateDateColumn()
     updatedAt: Date
+
+    @ManyToOne(() => User, (user) => user.address)
+    user: User
+
+    @OneToMany(() => ProductType, (productType) => productType.product)
+    productType: ProductType[]
+
 }

@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne } from "typeorm";
+import { User } from "./User";
 
 
 @Entity()
@@ -14,4 +15,8 @@ export class Address extends BaseEntity {
 
     @UpdateDateColumn()
     updatedAt:Date
+
+    @ManyToOne(() => User, (user) => user.address)
+    user: User
+
 }

@@ -1,7 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity,  OneToMany } from "typeorm";
+import { Address } from "./Address";
+import { Product } from "./Product";
+import { Order } from "./Order";
+import { Cart } from "./Cart";
 
 @Entity("user")
-export class user extends BaseEntity {
+export class User extends BaseEntity {
     @PrimaryGeneratedColumn()
     id:number
 
@@ -28,4 +32,16 @@ export class user extends BaseEntity {
 
     @UpdateDateColumn()
     updatedAt:Date
+
+    @OneToMany(() => Address, (address) => address.user)
+    address: Address[]
+
+    @OneToMany(() => Product, (product) => product.user)
+    product: Product[]
+
+    @OneToMany(() => Order, (order) => order.user)
+    order: Order[]
+
+    @OneToMany(() => Cart, (cart) => cart.user)
+    cart: Cart[]
 } 
