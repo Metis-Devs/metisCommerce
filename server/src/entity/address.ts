@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateCol
 
 
 @Entity()
-export class address extends BaseEntity {
+export class Address extends BaseEntity {
     @PrimaryGeneratedColumn()
     id:number
 

@@ -1,23 +1,28 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity } from "typeorm";
 
-
 @Entity()
-export class Order extends BaseEntity {
+export class Product extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id:number
+    id: number
 
     @Column()
-    state:number
-    
-    @Column()
-    address:string
+    name: string
 
     @Column()
-    price:number
+    price: number
+
+    @Column()
+    description: string
+
+    @Column()
+    image: string
+
+    @Column()
+    stock: number
 
     @CreateDateColumn()
-    createdAt:Date
+    createdAt: Date
 
     @UpdateDateColumn()
-    updatedAt:Date
+    updatedAt: Date
 }

@@ -1,16 +1,16 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity } from "typeorm";
 
 @Entity()
-export class Province extends BaseEntity {
+export class TypeProduct extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id:number
+    id: number
 
     @Column()
-    address:number
+    name: string
 
     @CreateDateColumn()
-    createdAt:Date
+    createdAt: Date
 
     @UpdateDateColumn()
-    updatedAt:Date
+    updatedAt: Date
 }
