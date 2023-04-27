@@ -15,5 +15,4 @@ export class ProductType extends BaseEntity {
     @UpdateDateColumn()
     updatedAt: Date
 
-   
 }
