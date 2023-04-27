@@ -1,5 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne } from "typeorm";
-import { Product } from "./Product";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity } from "typeorm";
+
 
 @Entity()
 export class ProductType extends BaseEntity {
@@ -15,6 +15,5 @@ export class ProductType extends BaseEntity {
     @UpdateDateColumn()
     updatedAt: Date
 
-    @ManyToOne(() => Product, (product) => product.productType)
-    product: Product
+   
 }
