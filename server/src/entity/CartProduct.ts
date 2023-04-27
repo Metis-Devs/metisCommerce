@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne } from "typeorm";
 import { Cart } from "./Cart";
+import { Product } from "./Product";
 
 @Entity()
 export class CartProduct extends BaseEntity {
@@ -17,4 +18,6 @@ export class CartProduct extends BaseEntity {
 
     @ManyToOne(() => Cart, (cart) => cart.carts)
     cart: Cart
+    @ManyToOne(() => Product, (product) => product.cartProducts)
+    product: Product
 }
