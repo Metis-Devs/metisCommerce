@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToMany } from "typeorm";
+import { Province } from "./Province";
 
 @Entity()
 export class Country extends BaseEntity {
@@ -7,6 +8,9 @@ export class Country extends BaseEntity {
 
     @Column()
     address:number
+
+    @OneToMany(() => Province, (province) => province.country)
+    provinces: Province[]
 
     @CreateDateColumn()
     createdAt:Date
