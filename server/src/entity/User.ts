@@ -34,14 +34,14 @@ export class User extends BaseEntity {
     updatedAt:Date
 
     @OneToMany(() => Address, (address) => address.user)
-    address: Address[]
+    addresses: Address[]
 
     @OneToMany(() => Product, (product) => product.user)
-    product: Product[]
+    products: Product[]
 
     @OneToMany(() => Order, (order) => order.user)
-    order: Order[]
+    orders: Order[]
 
     @OneToMany(() => Cart, (cart) => cart.user)
-    cart: Cart[]
+    carts: Cart[]
 } 

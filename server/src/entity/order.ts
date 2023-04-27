@@ -22,6 +22,6 @@ export class Order extends BaseEntity {
     @UpdateDateColumn()
     updatedAt:Date
 
-    @ManyToOne(() => User, (user) => user.order)
+    @ManyToOne(() => User, (user) => user.orders)
     user: User
 }

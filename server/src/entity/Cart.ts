@@ -15,6 +15,6 @@ export class Cart extends BaseEntity {
     @UpdateDateColumn()
     updatedAt: Date
 
-    @ManyToOne(() => User, (user) => user.cart)
+    @ManyToOne(() => User, (user) => user.carts)
     user: User
 }
