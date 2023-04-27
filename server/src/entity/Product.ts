@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne, ManyToMany, JoinTable, OneToMany } from "typeorm";
 import { User } from "./User";
 import { ProductType } from "./ProductType";
+import { CartProduct } from "./CartProduct";
 import { OrderProduct } from "./OrderProduct";
 
 @Entity()
@@ -38,5 +39,8 @@ export class Product extends BaseEntity {
     @ManyToMany(() => ProductType)
     @JoinTable()
     type: ProductType[]
+
+    @OneToMany(() => CartProduct, (cartProduct) => cartProduct.product)
+    cartProducts: CartProduct[]
 }
 
