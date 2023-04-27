@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne, OneToMany } from "typeorm";
 import { User } from "./User";
+import { OrderProduct } from "./OrderProduct";
 
 
 @Entity()
@@ -24,4 +25,7 @@ export class Order extends BaseEntity {
 
     @ManyToOne(() => User, (user) => user.orders)
     user: User
+
+    @OneToMany(() => OrderProduct, (orderproducts) => orderproducts.order)
+    orders: OrderProduct[]
 }

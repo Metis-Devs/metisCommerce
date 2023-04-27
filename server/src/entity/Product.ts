@@ -2,6 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateCol
 import { User } from "./User";
 import { ProductType } from "./ProductType";
 import { CartProduct } from "./CartProduct";
+import { OrderProduct } from "./OrderProduct";
 
 @Entity()
 export class Product extends BaseEntity {
@@ -31,6 +32,9 @@ export class Product extends BaseEntity {
 
     @ManyToOne(() => User, (user) => user.addresses)
     user: User
+
+    @OneToMany(() => OrderProduct, (orderproducts) => orderproducts.product)
+    orderproducts: OrderProduct[]
 
     @ManyToMany(() => ProductType)
     @JoinTable()

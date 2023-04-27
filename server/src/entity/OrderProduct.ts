@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne } from "typeorm";
+import { Product } from "./Product";
+import { Order } from "./Order";
 
 @Entity()
 export class OrderProduct extends BaseEntity {
@@ -13,4 +15,10 @@ export class OrderProduct extends BaseEntity {
 
     @UpdateDateColumn()
     updatedAt: Date
+
+    @ManyToOne(() => Product, (product) => product.orderproducts)
+    product: Product
+
+    @ManyToOne(() => Order, (order) => order.orders)
+    order: Product
 }
