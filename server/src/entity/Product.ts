@@ -38,7 +38,7 @@ export class Product extends BaseEntity {
 
     @ManyToMany(() => ProductType)
     @JoinTable()
-    type: ProductType[]
+    productTypes: ProductType[]
 
     @OneToMany(() => CartProduct, (cartProduct) => cartProduct.product)
     cartProducts: CartProduct[]
