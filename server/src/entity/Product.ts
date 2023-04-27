@@ -29,7 +29,7 @@ export class Product extends BaseEntity {
     @UpdateDateColumn()
     updatedAt: Date
 
-    @ManyToOne(() => User, (user) => user.address)
+    @ManyToOne(() => User, (user) => user.addresses)
     user: User
 
     @OneToMany(() => OrderProduct, (orderproducts) => orderproducts.product)
