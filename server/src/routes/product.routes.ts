@@ -7,6 +7,7 @@ const productRoutes = Router()
 productRoutes.get("/", productController.getAllProducts)
 productRoutes.post("/create", uploadImg, productController.createProduct)
 productRoutes.put("/update", uploadImg, productController.updateProduct)
+productRoutes.post("/addFavorite", productController.addFavorite)
 productRoutes.delete("/delete/:id", productController.deleteProduct)
 
 export default productRoutes

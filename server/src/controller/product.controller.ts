@@ -51,4 +51,15 @@ export const productController = {
 
         }
     },
+    addFavorite: async(req:Request, res:Response) => {
+        try{
+            const {userId, favItem} = req.body
+            await productService.favorite(favItem, +userId)
+
+            res.status(200).send("Se agrego a favoritos")
+        }catch(err:any){
+            res.status(500).send(err.message)
+
+        }
+    }
 }

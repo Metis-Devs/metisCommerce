@@ -47,4 +47,13 @@ export const productService = {
 
     await Product.delete(id);
   },
+  favorite: async (product: Product[], userId:number) => {
+    const user = await User.findOneBy({id:userId})
+
+    if(!user) throw new Error("No existe el usurario")
+    
+    user.favoritesItem = product
+
+    await user.save()
+  }
 };
