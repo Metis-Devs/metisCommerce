@@ -18,11 +18,11 @@ export class User extends BaseEntity {
     @Column()
     idNumber:string
 
-    @Column()
+    @Column({unique: true})
     email:string
 
-    @Column()
-    role:boolean
+    @Column({default: 0})
+    role:number
 
     @Column()
     password:string

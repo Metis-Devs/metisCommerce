@@ -21,7 +21,7 @@ export class Location extends BaseEntity {
     numeration:number
 
     @Column()
-    florNumber: number
+    floorNumber: string
 
     @Column()
     zipCode:number
