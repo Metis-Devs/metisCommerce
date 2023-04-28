@@ -1,15 +1,30 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne } from "typeorm";
 import { User } from "./User";
-import { Province } from "./Province";
+
 
 
 @Entity()
-export class Address extends BaseEntity {
+export class Location extends BaseEntity {
     @PrimaryGeneratedColumn()
     id:number
 
     @Column()
-    address:number
+    country: string
+
+    @Column()
+    province: string
+
+    @Column()
+    city: string
+
+    @Column()
+    numeration:number
+
+    @Column()
+    florNumber: number
+
+    @Column()
+    zipCode:number
 
     @CreateDateColumn()
     createdAt:Date
@@ -19,8 +34,5 @@ export class Address extends BaseEntity {
 
     @ManyToOne(() => User, (user) => user.addresses)
     user: User
-
-    @ManyToOne(() => Province, (province) => province.addresses)
-    province: Province
 
 }

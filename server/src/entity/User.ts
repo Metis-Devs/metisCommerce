@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity,  OneToMany } from "typeorm";
-import { Address } from "./Address";
+import { Location } from "./Location";
 import { Product } from "./Product";
 import { Order } from "./Order";
 import { Cart } from "./Cart";
@@ -33,8 +33,8 @@ export class User extends BaseEntity {
     @UpdateDateColumn()
     updatedAt:Date
 
-    @OneToMany(() => Address, (address) => address.user)
-    addresses: Address[]
+    @OneToMany(() => Location, (location) => location.user)
+    addresses: Location[]
 
     @OneToMany(() => Product, (product) => product.user)
     products: Product[]
