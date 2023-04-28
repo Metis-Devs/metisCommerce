@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity,  OneToMany } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity,  OneToMany, ManyToMany, JoinTable } from "typeorm";
 import { Location } from "./Location";
 import { Product } from "./Product";
 import { Order } from "./Order";
@@ -44,4 +44,8 @@ export class User extends BaseEntity {
 
     @OneToMany(() => Cart, (cart) => cart.user)
     carts: Cart[]
+
+    @ManyToMany(() => Product)
+    @JoinTable()
+    favoritesItem: Product[]
 } 
