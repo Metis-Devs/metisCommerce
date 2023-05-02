@@ -23,7 +23,9 @@ export const Product = () => {
 
     const fetchProducts = async ():Promise<[{}]> =>{
         const productList:any = await axios.get("http://localhost:3030/product")
-       
+       console.log(
+        "Hola"
+       )
         return productList.data
     }
 
@@ -38,8 +40,8 @@ export const Product = () => {
     })
 
   return (
-    <Container>
-      <Row>
+    <Container className='h-100'>
+      <Row style={{height:"350px"}}>
       {productList.map((product:any) => (
           <ProductCard product={product}/>
         ))}
