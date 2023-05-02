@@ -14,7 +14,7 @@ function App() {
     <CarouselComponent></CarouselComponent>
     
     <Routes>
-       <Route  path='/product' element={<Product></Product>}/>
+       <Route  index path='/' element={<Product></Product>}/>
      </Routes></>
   )
 }

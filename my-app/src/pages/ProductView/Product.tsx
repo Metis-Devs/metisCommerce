@@ -40,12 +40,14 @@ export const Product = () => {
     })
 
   return (
-    <Container className='h-100'>
+    <Container fluid style={{height: "100vh", backgroundColor: "#e5e5e5"}}>
+      <Container className='h-100'>
       <Row style={{height:"350px"}}>
       {productList.map((product:any) => (
           <ProductCard product={product}/>
         ))}
       </Row>
+    </Container>
     </Container>
   )
 }
