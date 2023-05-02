@@ -1,5 +1,10 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
+import item4 from "./switch.jpg"
+
+
+
+
 interface ProductInterface {
   product: {
     id:number
@@ -20,8 +25,8 @@ export const ProductCard = (props: ProductInterface) => {
   const {product} = props
   return (
     <Col key={product.id} md={3}>
-      <Card className="mt-5">
-        <Card.Img variant="top" src="" />
+      <Card className="w-100" style={{height: "400px", marginTop:"40px"}} >
+        <Card.Img variant="top" src={item4} />
         <Card.Body>
           <Card.Title>{product.name}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
