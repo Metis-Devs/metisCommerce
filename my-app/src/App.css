@@ -1,6 +1,32 @@
 #root{
 
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  position: absolute;
+  
+ 
 }
+
+.card-hover{
+  position: absolute;
+  margin-top: 40px;
+  height: 350px !important;
+  width: 224px !important;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+.card-hover:hover{
+ color: inherit;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+  transform: translateY(-5px);
+  transition: box-shadow 0.5s ease, transform 0.5s ease;
+  text-decoration: none;
+
+}
+
+.card-body{
+  color: #f5f5f5;
+  transition: background-color 1s ease;
+}
+
