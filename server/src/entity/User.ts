@@ -1,8 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity,  OneToMany, ManyToMany, JoinTable } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity,  OneToMany, ManyToMany, JoinTable, OneToOne } from "typeorm";
 import { Location } from "./Location";
 import { Product } from "./Product";
 import { Order } from "./Order";
 import { Cart } from "./Cart";
+import { Comment } from "./Comment";
 
 @Entity("user")
 export class User extends BaseEntity {
@@ -36,14 +37,17 @@ export class User extends BaseEntity {
     @OneToMany(() => Location, (location) => location.user)
     addresses: Location[]
 
+    @OneToMany(() => Comment, (comment) => comment.user)
+    comments: Comment[]
+
     @OneToMany(() => Product, (product) => product.user)
     products: Product[]
 
     @OneToMany(() => Order, (order) => order.user)
     orders: Order[]
 
-    @OneToMany(() => Cart, (cart) => cart.user)
-    carts: Cart[]
+    @OneToOne(() => Cart, (cart) => cart.user)
+    cart: Cart
 
     @ManyToMany(() => Product)
     @JoinTable()
