@@ -27,7 +27,7 @@ export const authService = {
     findUser: async(email:string):Promise<User> =>{
         const user = await User.findOneBy({email: email})
 
-        if(!user) throw new Error("No existe el usuario")
+        if(!user) throw new Error("Usuario no encontrado")
 
         return user
     },
