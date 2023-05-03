@@ -25,6 +25,12 @@
   
 }
 
+.login-password{
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+
 
 .login-card-form{
   width: 100%;

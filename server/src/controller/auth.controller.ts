@@ -6,7 +6,8 @@ export const authController = {
     register: async(req:Request, res:Response)=>{
         try{
             const {firstname, lastname, idNumber, password, email} = req.body 
-
+           
+            await authService.doesItExist(email)
             const encryptedPassword = authService.encryptPassword(password)
             const user = await authService.createUser(firstname, lastname, idNumber, encryptedPassword, email)
             const token = authService.getToken(user.role)
