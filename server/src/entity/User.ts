@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity,  OneToMany, ManyToMany, JoinTable, OneToOne } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity,  OneToMany, ManyToMany, JoinTable, OneToOne, JoinColumn } from "typeorm";
 import { Location } from "./Location";
 import { Product } from "./Product";
 import { Order } from "./Order";
@@ -46,7 +46,8 @@ export class User extends BaseEntity {
     @OneToMany(() => Order, (order) => order.user)
     orders: Order[]
 
-    @OneToOne(() => Cart, (cart) => cart.user)
+    @OneToOne(() => Cart, (cart) => cart.user, {eager: true})
+    @JoinColumn()
     cart: Cart
 
     @ManyToMany(() => Product)

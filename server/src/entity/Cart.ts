@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne, OneToMany } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToMany, OneToOne } from "typeorm";
 import { User } from "./User";
 import { CartProduct } from "./CartProduct";
 
@@ -16,9 +16,9 @@ export class Cart extends BaseEntity {
     @UpdateDateColumn()
     updatedAt: Date
 
-    @ManyToOne(() => User, (user) => user.carts)
+    @OneToOne(() => User, (user) => user.cart)
     user: User
 
     @OneToMany(() => CartProduct, (cartproduct) => cartproduct.cart)
-    carts: CartProduct[]
+    cartProducts: CartProduct[]
 }
