@@ -3,6 +3,7 @@ import { User } from "./User";
 import { ProductType } from "./ProductType";
 import { CartProduct } from "./CartProduct";
 import { OrderProduct } from "./OrderProduct";
+import { Comment } from "./Comment";
 
 @Entity()
 export class Product extends BaseEntity {
@@ -42,6 +43,9 @@ export class Product extends BaseEntity {
 
     @OneToMany(() => CartProduct, (cartProduct) => cartProduct.product)
     cartProducts: CartProduct[]
+
+    @OneToMany(() => Comment, (comment) => comment.product)
+    comments: Comment[]
 
     
 
