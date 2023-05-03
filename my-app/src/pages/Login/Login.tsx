@@ -1,16 +1,19 @@
 import React, { useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import ApiService from "../../service/api";
 import AlertService from "../../service/alert";
+import { faEye, faEyeSlash  } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface FormData {
   email: string;
   password: string;
 }
 export const Login = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(true);
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
@@ -18,24 +21,22 @@ export const Login = () => {
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-
   };
 
-  const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try{
-        const token = await ApiService.postPublic("/auth/login", formData)
-        console.log(token.data)
-        localStorage.setItem("loginToken", token.data.loginToken)
-        navigate("/")
-    }catch(err:any){
-        
-        AlertService.error({
-            title: "Error",
-            text: err.response.data.msg
-        })
+    try {
+      const token = await ApiService.postPublic("/auth/login", formData);
+      console.log(token.data);
+      localStorage.setItem("loginToken", token.data.loginToken);
+      navigate("/");
+    } catch (err: any) {
+      AlertService.error({
+        title: "Error",
+        text: err.response.data.msg,
+      });
     }
-};
+  };
   return (
     <Container
       fluid
@@ -63,14 +64,22 @@ export const Login = () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group controlId="formBasicEmail" className="login-password">
               <Form.Control
-                type="text"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="Password..."
                 className="form-control-lg"
                 onChange={onChange}
               />
+
+              <div
+                className="btn form-control-lg"
+                onClick={() => setShowPassword(!showPassword)}
+                
+              >
+                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+              </div>
             </Form.Group>
 
             <Button

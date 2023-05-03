@@ -31,6 +31,13 @@ export const authService = {
 
         return user
     },
+    doesItExist: async(email:string) =>{
+        const user = await User.findOneBy({email: email})
+        
+        if(user) throw new Error("Este email ya esta en uso")
+
+        
+    },
     decryptPassword: (password:string, encryptedPassword:string)=>{
         if(!bcrypt.compareSync(password,encryptedPassword)){
             throw new Error("Contraseña incorrecta")

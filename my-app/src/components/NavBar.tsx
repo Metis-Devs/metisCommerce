@@ -26,7 +26,7 @@ export const NavBar = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg" className="navbar-container">
       <Container fluid>
-        <Navbar.Brand href="#">MetisCommerce</Navbar.Brand>
+        <Navbar.Brand href="/">MetisCommerce</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
