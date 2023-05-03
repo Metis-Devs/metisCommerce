@@ -3,7 +3,7 @@ axios.defaults.baseURL = (process.env.REACT_APP_SERVER_URL)
 
 export default class ApiService {
 
-    static token = localStorage.getItem("token")
+    static token = localStorage.getItem("loginToken")
 
     static getPrivate(path: string) {
         return axios.get(path, {

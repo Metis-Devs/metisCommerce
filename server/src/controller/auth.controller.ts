@@ -10,7 +10,7 @@ export const authController = {
             const encryptedPassword = authService.encryptPassword(password)
             const user = await authService.createUser(firstname, lastname, idNumber, encryptedPassword, email)
             const token = authService.getToken(user.role)
-            res.status(200).json({token: token})
+            res.status(200).json({loginToken: token})
 
 
         }catch(err:any){
@@ -26,9 +26,9 @@ export const authController = {
             authService.decryptPassword(password,user.password)
             const token = authService.getToken(user.role)
 
-            res.status(200).json({token: token})
+            res.status(200).json({loginToken: token})
         }catch(err:any){
-            res.status(500).json({msg: err.message})
+            res.status(400).json({msg: err.message})
         }
     }
 }

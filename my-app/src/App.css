@@ -6,6 +6,43 @@
  
 }
 
+/* Register */
+.register-card{
+  width: 30%;
+  height: 60% !important;
+  
+}
+
+/* Log in */
+
+.login-titles{
+  margin: 20px;
+}
+
+.login-card{
+  width: 30%;
+  height: 40% !important;
+  
+}
+
+
+.login-card-form{
+  width: 100%;
+  height: 100% !important;
+  background-color: #e5e5e5;
+  display: flex;
+  justify-content: space-evenly;
+  justify-items: center;
+  flex-direction: column;
+  
+}
+
+
+
+
+
+
+/* Card css */
 .card-hover{
   position: absolute;
   margin-top: 40px;

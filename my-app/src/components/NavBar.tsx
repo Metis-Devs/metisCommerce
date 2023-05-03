@@ -10,11 +10,18 @@ export const NavBar = () => {
   const [token, setToken] = useState<boolean>(false);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
+    const storedToken = localStorage.getItem("loginToken");
     if (storedToken) {
       setToken(true);
     }
   });
+
+  const handleClick = () => {
+    
+    localStorage.clear()
+    window.location.reload();
+
+  }
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg" className="navbar-container">
@@ -29,8 +36,8 @@ export const NavBar = () => {
           >
             
             <NavDropdown title={token ? "UserName" : "Ingresar"} >
-              <NavDropdown.Item href="#action3">{token ? "Compras" : "Login"}</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
+              <NavDropdown.Item href={token ? "Compras" : "/login"}>{token ? "Compras" : "Login"}</NavDropdown.Item>
+              <NavDropdown.Item href={token ? "Compras" : "/register"}>
               {token ? "Vender" : "Crear cuenta"}
               </NavDropdown.Item>
               
@@ -40,7 +47,7 @@ export const NavBar = () => {
               Preguntas
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action4">
+              <NavDropdown.Item href="#action4" onClick={handleClick}>
               
               Salir
               </NavDropdown.Item>
