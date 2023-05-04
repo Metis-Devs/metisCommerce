@@ -32,7 +32,7 @@ export const Location = () => {
     zipCode: "",
   });
 
-  const [province, setProvince] = useState<locatioObject[]>([ ]);
+  const [province, setProvince] = useState<locatioObject[]>([]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -54,18 +54,30 @@ export const Location = () => {
     setBasicData({ ...basicData, [e.target.name]: e.target.value });
   };
 
-  const getProvince = async () => {
-    var data = await axios.get(
-      "https://apis.datos.gob.ar/georef/api/municipios?provincia=mendoza&max=999"
-    );
-
-    setProvince(data.data.municipios);
-    console.log(province);
-  };
+  
 
   useEffect(()=>{
+    const getProvince = async () => {
+      var data = await axios.get(
+        "https://apis.datos.gob.ar/georef/api/municipios?provincia=mendoza&max=999"
+      );
+  
+      // data.data.municipios.map((p:any) => {
+        const municipios = data.data.municipios.map((municipio: any) => ({
+          id: municipio.id,
+          nombre: municipio.nombre,
+          
+        }));
+        setProvince(municipios);
+
+        
+      // })
+      
+      console.log(province)
+    };
+
     getProvince()
-  })
+  }, [])
 
   return (
     <Container
@@ -107,7 +119,6 @@ export const Location = () => {
             <Form.Select
               aria-label="Default select example"
               className="form-control-lg"
-              onClick={getProvince}
             >
               {/* {province} */}
             </Form.Select>

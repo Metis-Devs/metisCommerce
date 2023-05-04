@@ -61,5 +61,28 @@ export const productController = {
             res.status(500).send(err.message)
 
         }
+    },
+    getOne: async(req:Request, res:Response) => {
+        try{ 
+            const id = req.params.id
+            
+            const product = await productService.getOne(+id)
+
+            res.status(200).send(product)
+        }catch(err:any){
+            res.status(500).send(err.message)
+
+        }
+    },
+    getUserProducts: async(req:Request, res:Response) => {
+        try{ 
+            const id = req.params.userId
+            const productId = req.params.productId
+            const product = await productService.getUserProducts(+id, +productId)
+            res.status(200).send(product)
+        }catch(err:any){
+            res.status(500).send(err.message)
+
+        }
     }
 }

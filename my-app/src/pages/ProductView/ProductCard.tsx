@@ -18,7 +18,7 @@ interface ProductInterface {
 export const ProductCard = (props: ProductInterface) => {
   const { product } = props;
   const [onEnter, setOnEnter] = useState<boolean>(false)
-
+  
   const onMouseEnter = () =>{
     setOnEnter(true)
   }
@@ -31,8 +31,7 @@ export const ProductCard = (props: ProductInterface) => {
     <Col key={product.id} lg={3}>
       <a
         className="w-100 card-hover card"
-        href="https://chat.openai.com/"
-        target="_blank"
+        href={"/productDescription/" + product.id} 
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         style={{backgroundColor: "#f5f5f5"}}
@@ -48,7 +47,7 @@ export const ProductCard = (props: ProductInterface) => {
             Envio Gratis
           </Card.Subtitle>
           <Card.Text style={{display: onEnter ? 'block' : 'none' }}>
-            {product.description}
+            {product.description.substring(0,60)}...
           </Card.Text>
         </Card.Body>
         
