@@ -8,6 +8,7 @@ import { CarouselComponent } from './components/Carousel';
 import { Login } from './pages/Login/Login';
 import { Register } from './pages/Register/Register';
 import { Location } from './pages/Register/Location';
+import { ProductDescription } from './pages/ProductDescription/ProductDescription';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/login" element={<Login></Login>}/>
         <Route path="/register" element={<Register></Register>}/>
         <Route path="/location" element={<Location></Location>}/>
+        <Route  path="/productDescription/:id" element={<><NavBar></NavBar><ProductDescription></ProductDescription></>}/>
        <Route  index path='/' element={<><NavBar></NavBar><CarouselComponent></CarouselComponent><Product></Product></>}/>
      </Routes>
      
