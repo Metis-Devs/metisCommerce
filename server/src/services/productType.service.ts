@@ -31,5 +31,5 @@ export const productTypeService = {
     if (!productType) throw new Error("No existe el tipo producto");
 
     await ProductType.delete(id);
-  },
+  }
 };

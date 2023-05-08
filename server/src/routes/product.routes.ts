@@ -11,5 +11,6 @@ productRoutes.get("/userProducts/:userId/:productId", productController.getUserP
 productRoutes.put("/update", uploadImg, productController.updateProduct)
 productRoutes.post("/addFavorite", productController.addFavorite)
 productRoutes.delete("/delete/:id", productController.deleteProduct)
+productRoutes.get("/productType/:type", productController.getProductType)
 
 export default productRoutes

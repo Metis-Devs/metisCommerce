@@ -92,4 +92,25 @@ export const productService = {
     })
     return userProductList;
   },
+  getProductType: async (name:string): Promise<Product[]> => {
+    const userProductList:Product[] = []
+    const products = await Product.find({
+      relations:{productTypes:true}
+    });
+    
+    
+    if (!products) throw new Error("No existe este producto!");
+   
+   
+    products.map(p => {
+      
+      
+      p.productTypes.map(t => {
+        if(t.name === name){
+            userProductList.push(p)
+          }
+      })
+    })
+    return userProductList;
+  },
 };
