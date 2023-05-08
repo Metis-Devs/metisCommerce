@@ -47,5 +47,5 @@ export const productTypeController = {
             res.status(500).send(err.message)
 
         }
-    },
+    }
 }

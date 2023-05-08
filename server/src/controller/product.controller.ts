@@ -84,5 +84,16 @@ export const productController = {
             res.status(500).send(err.message)
 
         }
-    }
+    },
+    getProductType: async(req:Request, res:Response) => {
+        try{ 
+            const type = req.params.type
+            
+            const product = await productService.getProductType(type)
+            res.status(200).send(product)
+        }catch(err:any){
+            res.status(500).send(err.message)
+
+        }
+    },
 }
