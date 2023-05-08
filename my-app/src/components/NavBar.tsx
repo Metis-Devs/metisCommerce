@@ -8,6 +8,8 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import ApiService from "../service/api";
 import { get } from "http";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartPlus, faUser } from "@fortawesome/free-solid-svg-icons";
 
 interface productType {
   type: { id: number; name: string; createdAt?: string; updatedAt?: string };
@@ -95,6 +97,9 @@ export const NavBar = () => {
             </NavDropdown>
           </Nav>
           <Form className="d-flex">
+          <a href="">
+          <FontAwesomeIcon icon={faCartPlus} />
+          </a>
             <Form.Control
               type="search"
               placeholder="Search"

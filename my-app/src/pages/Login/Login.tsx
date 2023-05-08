@@ -47,7 +47,9 @@ export const Login = () => {
         <div className="login-titles">
           <h3>Metis Commerce Login</h3>
           <h5>Enter email and password to log on:</h5>
+          <hr />
         </div>
+        
         {/* <Card.Body className="login-card-body" style={{ backgroundColor: "#e5e5e5" }}> */}
         <blockquote
           className="blockquote mb-0 card-body"
