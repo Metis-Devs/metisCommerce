@@ -1,10 +1,31 @@
 import { faArrowRight, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import ApiService from "../../service/api";
 
 export const Profile = () => {
+  const [userName, setUserName] = useState<string>("")
+  const [userSecondName, setUserSecondName] = useState<string>("")
+  const userId = localStorage.getItem("userKey")
+
+  const fetchUserName = async () => {
+    try {
+      const response = await ApiService.postPublic("http://localhost:3030/user/getUser", {
+        userId
+      });
+      setUserName(response.data.firstname)
+      setUserSecondName(response.data.lastname)
+      
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(()=>{
+    fetchUserName()
+  })
   return (
     <Container
       fluid
@@ -14,7 +35,7 @@ export const Profile = () => {
       <div className="profile-name">
         <div className="profile-name-inner">
           <FontAwesomeIcon icon={faUser} />
-          <h2>Theo Fornetti</h2>
+          <h2>{userName + " " + userSecondName}</h2>
         </div>
       </div>
 

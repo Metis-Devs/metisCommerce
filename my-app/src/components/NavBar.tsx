@@ -18,12 +18,26 @@ interface productType {
 export const NavBar = () => {
   const [token, setToken] = useState<boolean>(false);
   const [types, setTypes] = useState<productType["type"][]>([]);
+  const [userName, setUserName] = useState<string>("")
+  const userId = localStorage.getItem("userKey")
 
   const getTypes = async () => {
     try {
       const response = await axios.get("http://localhost:3030/productType");
       const data: productType["type"][] = response.data;
       return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const fetchUserName = async () => {
+    try {
+      const response = await ApiService.postPublic("http://localhost:3030/user/getUser", {
+        userId
+      });
+      setUserName(response.data.firstname)
+      
     } catch (err) {
       console.log(err);
     }
@@ -43,6 +57,8 @@ export const NavBar = () => {
     if (types.length === 0) {
       fetchData();
     }
+
+    fetchUserName()
   }, [types]);
 
   if (types.length === 0) {
@@ -65,7 +81,7 @@ export const NavBar = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <NavDropdown title={token ? "UserName" : "Ingresar"}>
+            <NavDropdown title={token ? userName : "Ingresar"}>
               <NavDropdown.Item href={token ? "/profile" : "/login"}>
                 {token ? "Perfil" : "Login"}
               </NavDropdown.Item>

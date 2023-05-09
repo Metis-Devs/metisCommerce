@@ -5,7 +5,7 @@ import { userController } from "../controller/user.controller"
 const userRoutes = Router()
 
 
-userRoutes.post("/addToCart", userController.addToCart)
+userRoutes.post("/getUser", userController.findOneUser)
 
 
 export default userRoutes

@@ -29,6 +29,7 @@ export const Login = () => {
       const token = await ApiService.postPublic("/auth/login", formData);
       console.log(token.data);
       localStorage.setItem("loginToken", token.data.loginToken);
+      localStorage.setItem("userKey", token.data.userKey);
       navigate("/");
     } catch (err: any) {
       AlertService.error({
@@ -53,9 +54,9 @@ export const Login = () => {
         {/* <Card.Body className="login-card-body" style={{ backgroundColor: "#e5e5e5" }}> */}
         <blockquote
           className="blockquote mb-0 card-body"
-          style={{ backgroundColor: "#e5e5e5" }}
+          // style={{ backgroundColor: "#e5e5e5" }}
         >
-          <Form className="login-card-form " onSubmit={handleSubmit}>
+          <Form className="login-card-form" onSubmit={handleSubmit}>
             <Form.Group controlId="formBasicName">
               <Form.Control
                 type="email"
