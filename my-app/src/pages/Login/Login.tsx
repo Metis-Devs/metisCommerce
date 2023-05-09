@@ -29,6 +29,7 @@ export const Login = () => {
       const token = await ApiService.postPublic("/auth/login", formData);
       console.log(token.data);
       localStorage.setItem("loginToken", token.data.loginToken);
+      localStorage.setItem("userKey", token.data.userKey);
       navigate("/");
     } catch (err: any) {
       AlertService.error({
@@ -47,13 +48,15 @@ export const Login = () => {
         <div className="login-titles">
           <h3>Metis Commerce Login</h3>
           <h5>Enter email and password to log on:</h5>
+          <hr />
         </div>
+        
         {/* <Card.Body className="login-card-body" style={{ backgroundColor: "#e5e5e5" }}> */}
         <blockquote
           className="blockquote mb-0 card-body"
-          style={{ backgroundColor: "#e5e5e5" }}
+          // style={{ backgroundColor: "#e5e5e5" }}
         >
-          <Form className="login-card-form " onSubmit={handleSubmit}>
+          <Form className="login-card-form" onSubmit={handleSubmit}>
             <Form.Group controlId="formBasicName">
               <Form.Control
                 type="email"

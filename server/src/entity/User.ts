@@ -26,6 +26,9 @@ export class User extends BaseEntity {
     role:number
 
     @Column()
+    phoneNumber:number
+
+    @Column()
     password:string
 
     @CreateDateColumn()

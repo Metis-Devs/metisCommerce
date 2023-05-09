@@ -27,7 +27,7 @@ export const authController = {
             authService.decryptPassword(password,user.password)
             const token = authService.getToken(user.role)
 
-            res.status(200).json({loginToken: token})
+            res.status(200).json({loginToken: token, userKey: user.id})
         }catch(err:any){
             res.status(400).json({msg: err.message})
         }
