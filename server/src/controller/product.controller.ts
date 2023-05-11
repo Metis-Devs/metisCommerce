@@ -33,7 +33,7 @@ export const productController = {
             const { id, name, price, description, stock, productTypes } = req.body
             const image: string = req.file?.path || ""
             const productType = await productService.update(+id, name, price, description, image, stock, productTypes)
-
+            
             res.status(200).send(productType)
         } catch (err: any) {
             res.status(500).send(err.message)

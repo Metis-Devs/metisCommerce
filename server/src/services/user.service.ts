@@ -1,5 +1,6 @@
 // import { Cart } from "../entity/Cart"
 import { User } from "../entity/User";
+import { Product } from "../entity/Product";
 
 export const userService = {
   findOneUser: async (userId: number): Promise<User> => {
@@ -39,5 +40,17 @@ export const userService = {
     await user.save();
 
     return user;
+  },
+  getUserProducts: async (userId: number): Promise<Product[]> => {
+    const productList = await Product.find({ relations:{user:true}});
+
+    if (!productList ) throw new Error("El usuario no tiene productos");
+
+    const userProductList:Product[] = productList.filter((p)=>{
+      return p.user.id === userId
+    })
+
+
+    return userProductList;
   },
 };
