@@ -24,4 +24,14 @@ export const userController = {
       res.status(500).json({ msg: err.message });
     }
   },
+  getUserProducts: async (req: Request, res: Response) => {
+    try {
+     const userId = req.params.userId
+     const userProductList = await userService.getUserProducts(+userId)
+
+     res.send(userProductList)
+    } catch (err: any) {
+      res.json({msg: err.message})
+    }
+  },
 };
